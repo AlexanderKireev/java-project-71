@@ -4,7 +4,8 @@ import hexlet.code.Format;
 import java.util.Map;
 
 public class Stylish implements Format {
-    public String getString(Map<String, Object> dataFile1, Map<String, Object> dataFile2, Map<String, Object> dataSign) {
+    public final String getString(Map<String, Object> dataFile1, Map<String, Object> dataFile2,
+                            Map<String, Object> dataSign) {
         var result = new StringBuilder("{\n");
         for (Map.Entry<String, Object> data : dataSign.entrySet()) {
             if (data.getValue().equals("unchanged")) {
@@ -26,6 +27,6 @@ public class Stylish implements Format {
     }
 
     public static String makeString(String sign, String key, Object value) {
-        return " ".repeat(4) + sign + " " + key + ": " + value + "\n";
+        return "    "/*.repeat(4)*/ + sign + " " + key + ": " + value + "\n";
     }
 }

@@ -12,7 +12,8 @@ import java.util.TreeMap;
 
 
 public class Json implements Format {
-    public String getString(Map<String, Object> dataFile1, Map<String, Object> dataFile2, Map<String, Object> dataSign) throws Exception {
+    public final String getString(Map<String, Object> dataFile1, Map<String, Object> dataFile2,
+                            Map<String, Object> dataSign) throws Exception {
         List<Object> allData = new ArrayList<>();
         for (Map.Entry<String, Object> data : dataSign.entrySet()) {
             Map<String, Object> m = new TreeMap<>();

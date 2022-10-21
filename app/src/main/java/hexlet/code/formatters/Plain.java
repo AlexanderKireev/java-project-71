@@ -6,7 +6,8 @@ import org.apache.commons.lang3.ClassUtils;
 import java.util.Map;
 
 public class Plain implements Format {
-    public String getString(Map<String, Object> dataFile1, Map<String, Object> dataFile2, Map<String, Object> dataSign) {
+    public final String getString(Map<String, Object> dataFile1, Map<String, Object> dataFile2,
+                            Map<String, Object> dataSign) {
         var result = new StringBuilder();
         for (Map.Entry<String, Object> data: dataSign.entrySet()) {
             Object firstVal = dataFile1.get(data.getKey());
@@ -36,7 +37,7 @@ public class Plain implements Format {
         return result.toString();
     }
 
-    public static String getValByType (Object o) {
+    public static String getValByType(Object o) {
         if (o == null) {
             return "null";
         }

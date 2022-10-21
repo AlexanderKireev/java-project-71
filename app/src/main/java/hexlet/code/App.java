@@ -19,14 +19,14 @@ class App implements Callable<Integer> {
     private String filepath2;
 
     @Option(names = {"-f", "--format"}, description = "output format [default: stylish]")
-    String formatName = "stylish";
+    private String formatName = "stylish";
 
     @Override
     public Integer call() throws Exception {
         try {
-        var diff = Differ.generate(filepath1, filepath2, formatName);
-        System.out.println(diff);
-        return 0;
+            var diff = Differ.generate(filepath1, filepath2, formatName);
+            System.out.println(diff);
+            return 0;
         } catch (IOException e) {
             System.out.println("Incorrect .json or .yml file format"/* + e.getMessage()*/);
             System.exit(0);
