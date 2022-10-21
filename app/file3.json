@@ -1,0 +1,16 @@
+[{"name":"common","objectsDifference":
+[{"name":"setting1","valuesPair":["Value 1","Value 1"]},
+    {"name":"setting2","valuesPair":[200,null]},
+    {"name":"setting3","valuesPair":[true,{"key":"value"}]},
+    {"name":"setting6","objectsDifference":
+    [{"name":"key","valuesPair":["value","value"]},
+    {"name":"ops","valuesPair":[null,"vops"]}]},
+    {"name":"follow","valuesPair":[null,false]},
+    {"name":"setting4","valuesPair":[null,"blah blah"]},
+    {"name":"setting5","valuesPair":[null,{"key5":"value5"}]}]},
+    {"name":"group1","objectsDifference":[
+    {"name":"baz","valuesPair":["bas",324]},
+    {"name":"foo","valuesPair":["bar","bar"]},
+    {"name":"nest","valuesPair":[{"key":"value"},"str"]}]},
+    {"name":"group2","valuesPair":[{"abc":12345},null]},
+    {"name":"group3","valuesPair":[null,{"fee":100500}]}]
