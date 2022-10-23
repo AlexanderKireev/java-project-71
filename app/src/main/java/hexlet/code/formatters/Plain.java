@@ -19,7 +19,7 @@ public class Plain implements Format {
                 result.append(getValByType(firstVal));
                 result.append(" to ");
                 result.append(getValByType(secondVal));
-                result.append("\n");
+//                result.append("\n");
             }
             if (data.getValue().equals("added")) {
                 result.append("Property '");
@@ -34,7 +34,7 @@ public class Plain implements Format {
                 result.append("' was removed\n");
             }
         }
-        return result.toString().replaceFirst(".$", "");
+        return result.toString()/*.replaceFirst(".$", "")*/;
     }
 
     public static String getValByType(Object o) {
