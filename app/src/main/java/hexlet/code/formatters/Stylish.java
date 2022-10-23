@@ -27,6 +27,6 @@ public class Stylish implements Format {
     }
 
     public static String makeString(String sign, String key, Object value) {
-        return "    "/*.repeat(4)*/ + sign + " " + key + ": " + value + "\n";
+        return "  "/*.repeat(4)*/ + sign + " " + key + ": " + value + "\n";
     }
 }
