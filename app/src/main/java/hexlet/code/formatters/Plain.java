@@ -2,6 +2,7 @@ package hexlet.code.formatters;
 
 import hexlet.code.Format;
 import org.apache.commons.lang3.ClassUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.Map;
 
@@ -19,7 +20,7 @@ public class Plain implements Format {
                 result.append(getValByType(firstVal));
                 result.append(" to ");
                 result.append(getValByType(secondVal));
-//                result.append("\n");
+                result.append("\n");
             }
             if (data.getValue().equals("added")) {
                 result.append("Property '");
@@ -34,7 +35,9 @@ public class Plain implements Format {
                 result.append("' was removed\n");
             }
         }
-        return result.toString()/*.replaceFirst(".$", "")*/;
+        return StringUtils.removeEnd(result.toString(), "\n");
+
+//                String.join("\n", result.toString());
     }
 
     public static String getValByType(Object o) {
