@@ -36,8 +36,6 @@ public class Plain implements Format {
             }
         }
         return StringUtils.removeEnd(result.toString(), "\n");
-
-//                String.join("\n", result.toString());
     }
 
     public static String getValByType(Object o) {
