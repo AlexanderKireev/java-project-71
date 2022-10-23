@@ -6,7 +6,7 @@
 [![asciicast](https://asciinema.org/a/531153.svg)](https://asciinema.org/a/531153)
 
 #### Step 5 of Project: json
-[![asciicast](https://asciinema.org/a/531025.svg)](https://asciinema.org/a/531025)
+[![asciicast](https://asciinema.org/a/531479.svg)](https://asciinema.org/a/531479)
 
 #### Step 7 of Project: yml
 [![asciicast](https://asciinema.org/a/531456.svg)](https://asciinema.org/a/531456)
