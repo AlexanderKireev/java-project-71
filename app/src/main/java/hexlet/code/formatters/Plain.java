@@ -34,7 +34,7 @@ public class Plain implements Format {
                 result.append("' was removed\n");
             }
         }
-        return result.toString();
+        return result.toString().replaceFirst(".$", "");
     }
 
     public static String getValByType(Object o) {
