@@ -11,8 +11,6 @@ public class Parser {
     public static TreeMap<String, Object> getData(String content) throws Exception {
         byte[] mapData = Files.readAllBytes(Paths.get(content));
 //        return new ObjectMapper().readValue(mapData, new TypeReference<>() {});
-
-
 //        String json = new ObjectMapper().writeValueAsString(payload);
 //        System.out.println(json);
         return new YAMLMapper().readValue(mapData, new TypeReference<>() {

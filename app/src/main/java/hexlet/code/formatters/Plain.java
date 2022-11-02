@@ -14,25 +14,17 @@ public class Plain implements Format {
             Object firstVal = dataFile1.get(data.getKey());
             Object secondVal = dataFile2.get(data.getKey());
             if (data.getValue().equals("changed")) {
-                result.append("Property '");
-                result.append(data.getKey());
-                result.append("' was updated. From ");
-                result.append(getValByType(firstVal));
-                result.append(" to ");
-                result.append(getValByType(secondVal));
-                result.append("\n");
+                result.append("Property '").append(data.getKey())
+                        .append("' was updated. From ").append(getValByType(firstVal))
+                        .append(" to ").append(getValByType(secondVal)).append("\n");
             }
             if (data.getValue().equals("added")) {
-                result.append("Property '");
-                result.append(data.getKey());
-                result.append("' was added with value: ");
-                result.append(getValByType(secondVal));
-                result.append("\n");
+                result.append("Property '").append(data.getKey())
+                        .append("' was added with value: ")
+                        .append(getValByType(secondVal)).append("\n");
             }
             if (data.getValue().equals("deleted")) {
-                result.append("Property '");
-                result.append(data.getKey());
-                result.append("' was removed\n");
+                result.append("Property '").append(data.getKey()).append("' was removed\n");
             }
         }
         return StringUtils.removeEnd(result.toString(), "\n");

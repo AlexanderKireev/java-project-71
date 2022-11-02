@@ -12,8 +12,8 @@ public class Stylish implements Format {
                 result.append(makeString(" ", data.getKey(), dataFile1.get(data.getKey())));
             }
             if (data.getValue().equals("changed")) {
-                result.append(makeString("-", data.getKey(), dataFile1.get(data.getKey())));
-                result.append(makeString("+", data.getKey(), dataFile2.get(data.getKey())));
+                result.append(makeString("-", data.getKey(), dataFile1.get(data.getKey())))
+                        .append(makeString("+", data.getKey(), dataFile2.get(data.getKey())));
             }
             if (data.getValue().equals("added")) {
                 result.append(makeString("+", data.getKey(), dataFile2.get(data.getKey())));
@@ -27,6 +27,6 @@ public class Stylish implements Format {
     }
 
     public static String makeString(String sign, String key, Object value) {
-        return "  "/*.repeat(4)*/ + sign + " " + key + ": " + value + "\n";
+        return "  "/*.repeat(2)*/ + sign + " " + key + ": " + value + "\n";
     }
 }

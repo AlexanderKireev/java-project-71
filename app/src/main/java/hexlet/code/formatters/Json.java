@@ -1,15 +1,14 @@
 package hexlet.code.formatters;
 
-//import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.ObjectMapper;
-//import com.fasterxml.jackson.databind.ObjectWriter;
 import hexlet.code.Format;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 //import java.io.File;
-
+//import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
+//import com.fasterxml.jackson.databind.ObjectWriter;
 
 public class Json implements Format {
     public final String getString(Map<String, Object> dataFile1, Map<String, Object> dataFile2,
@@ -32,13 +31,10 @@ public class Json implements Format {
             }
             allData.add(m);
         }
-
-//        String json = new ObjectMapper().writeValueAsString(allData);
-
+//        запись результата в json-файл
 //        ObjectMapper mapper = new ObjectMapper();
 //        ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
-//        writer.writeValue(new File("D:/dataTwo.json"), allData);
-
+//        writer.writeValue(new File("D:/resultFile.json"), allData);
         return new ObjectMapper().writeValueAsString(allData);
     }
 }
