@@ -21,10 +21,10 @@ version = '1.0.3-SNAPSHOT'
 
 repositories {
     mavenCentral()
-    maven {
-        url 'https://repo.clojars.org'
-        name 'Clojars'
-    }
+//    maven {
+//        url 'https://repo.clojars.org'
+//        name 'Clojars'
+//    }
 }
 
 compileJava {
@@ -78,15 +78,15 @@ testlogger {
 
 jacocoTestReport {
     reports {
-        xml.required = false
-        csv.required = false
-        html.required = true
+        xml.required = true
+//        csv.required = false
+//        html.required = true
 //        html.destination file('target/jacocoHtml')
     }
 }
 
-jacoco {
-    toolVersion = '0.8.8'
+//jacoco {
+//    toolVersion = '0.8.8'
 }
 
 checkstyle {
