@@ -21,10 +21,10 @@ version = '1.0.3-SNAPSHOT'
 
 repositories {
     mavenCentral()
-    maven {
-        url 'https://repo.clojars.org'
-        name 'Clojars'
-    }
+//    maven {
+//        url 'https://repo.clojars.org'
+//        name 'Clojars'
+//    }
 }
 
 compileJava {
@@ -43,9 +43,7 @@ dependencies {
     implementation 'org.apache.commons:commons-lang3:3.12.0'
 
     implementation 'com.github.lbovolini:ObjectMapper:0.2.3'
-    implementation 'tenlet:tenlet:0.2'
-    implementation 'com.marvinformatics.formatter:formatters:2.2.0'
-    implementation 'org.ops4j.pax.wicket.samples.plain:plain:5.0.0'
+    
     annotationProcessor 'org.apache.commons:commons-lang3:3.12.0'
 
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
