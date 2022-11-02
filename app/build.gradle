@@ -80,7 +80,8 @@ jacocoTestReport {
     reports {
         xml.required = false
         csv.required = false
-        html.destination file('target/site/jacoco')
+        html.required = true
+//        html.destination file('target/jacocoHtml')
     }
 }
 
