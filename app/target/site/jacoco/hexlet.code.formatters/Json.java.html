@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Json.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">app</a> &gt; <a href="index.source.html" class="el_package">hexlet.code.formatters</a> &gt; <span class="el_source">Json.java</span></div><h1>Json.java</h1><pre class="source lang-java linenums">package hexlet.code.formatters;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import hexlet.code.Format;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+//import java.io.File;
+//import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
+//import com.fasterxml.jackson.databind.ObjectWriter;
+
+<span class="fc" id="L13">public class Json implements Format {</span>
+    public final String getString(Map&lt;String, Object&gt; dataFile1, Map&lt;String, Object&gt; dataFile2,
+                            Map&lt;String, Object&gt; dataSign) throws Exception {
+<span class="fc" id="L16">        List&lt;Object&gt; allData = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L17" title="All 2 branches covered.">        for (Map.Entry&lt;String, Object&gt; data : dataSign.entrySet()) {</span>
+<span class="fc" id="L18">            Map&lt;String, Object&gt; m = new TreeMap&lt;&gt;();</span>
+<span class="fc" id="L19">            m.put(&quot;operation&quot;, data.getValue());</span>
+<span class="fc" id="L20">            m.put(&quot;name&quot;, data.getKey());</span>
+<span class="fc bfc" id="L21" title="All 2 branches covered.">            if (data.getValue().equals(&quot;added&quot;)</span>
+<span class="fc bfc" id="L22" title="All 2 branches covered.">                    || data.getValue().equals(&quot;unchanged&quot;)) {</span>
+<span class="fc" id="L23">                m.put(&quot;value&quot;, dataFile2.get(data.getKey()));</span>
+            }
+<span class="fc bfc" id="L25" title="All 2 branches covered.">            if (data.getValue().equals(&quot;deleted&quot;)) {</span>
+<span class="fc" id="L26">                m.put(&quot;value&quot;, dataFile1.get(data.getKey()));</span>
+            }
+<span class="fc bfc" id="L28" title="All 2 branches covered.">            if (data.getValue().equals(&quot;changed&quot;)) {</span>
+<span class="fc" id="L29">                m.put(&quot;value1&quot;, dataFile1.get(data.getKey()));</span>
+<span class="fc" id="L30">                m.put(&quot;value2&quot;, dataFile2.get(data.getKey()));</span>
+            }
+<span class="fc" id="L32">            allData.add(m);</span>
+<span class="fc" id="L33">        }</span>
+//        запись результата в json-файл
+//        ObjectMapper mapper = new ObjectMapper();
+//        ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
+//        writer.writeValue(new File(&quot;D:/resultFile.json&quot;), allData);
+<span class="fc" id="L38">        return new ObjectMapper().writeValueAsString(allData);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
