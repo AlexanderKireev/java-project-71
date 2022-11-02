@@ -21,6 +21,10 @@ version = '1.0.3-SNAPSHOT'
 
 repositories {
     mavenCentral()
+    maven {
+        url 'https://repo.clojars.org'
+        name 'Clojars'
+    }
 }
 
 compileJava {
@@ -31,14 +35,17 @@ application {
     mainClass = 'hexlet.code.App'
 }
 
-run {
-    standardInput = System.in
-}
+//run {
+//    standardInput = System.in
+//}
 
 dependencies {
     implementation 'org.apache.commons:commons-lang3:3.12.0'
 
     implementation 'com.github.lbovolini:ObjectMapper:0.2.3'
+    implementation 'tenlet:tenlet:0.2'
+    implementation 'com.marvinformatics.formatter:formatters:2.2.0'
+    implementation 'org.ops4j.pax.wicket.samples.plain:plain:5.0.0'
     annotationProcessor 'org.apache.commons:commons-lang3:3.12.0'
 
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
@@ -51,9 +58,9 @@ dependencies {
     implementation 'info.picocli:picocli:4.6.3'
     annotationProcessor 'info.picocli:picocli-codegen:4.6.3'
 
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.14.0-rc1'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.14.0-rc2'
     implementation 'io.vertx:vertx-core:4.3.4'
-    implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.14.0-rc1'
+    implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.14.0-rc2'
 
     /* errorprone 'com.google.errorprone:error_prone_core:2.13.0'*/
 }
@@ -68,10 +75,13 @@ testlogger {
 
 jacocoTestReport {
     reports {
-        xml.required = true
+        xml.required = false
+        csv.required = false
+        html.outputLocation = layout.buildDirectory.dir('jacocoHtml')
     }
 }
 
 checkstyle {
     toolVersion '9.2.1'
 }
+test.finalizedBy jacocoTestReport
