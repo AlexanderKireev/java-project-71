@@ -67,21 +67,27 @@ dependencies {
 
 test {
     useJUnitPlatform()
+    finalizedBy jacocoTestReport
 }
 
 testlogger {
     showStandardStreams true
 }
 
+
+
 jacocoTestReport {
     reports {
         xml.required = false
         csv.required = false
-        html.outputLocation = layout.buildDirectory.dir('jacocoHtml')
+        html.destination file('target/site/jacoco')
     }
+}
+
+jacoco {
+    toolVersion = '0.8.8'
 }
 
 checkstyle {
     toolVersion '9.2.1'
 }
-test.finalizedBy jacocoTestReport
