@@ -35,15 +35,15 @@ application {
     mainClass = 'hexlet.code.App'
 }
 
-run {
-    standardInput = System.in
-}
+//run {
+//    standardInput = System.in
+//}
 
 dependencies {
     implementation 'org.apache.commons:commons-lang3:3.12.0'
 
     implementation 'com.github.lbovolini:ObjectMapper:0.2.3'
-    
+
     annotationProcessor 'org.apache.commons:commons-lang3:3.12.0'
 
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
@@ -65,17 +65,23 @@ dependencies {
 
 test {
     useJUnitPlatform()
+    finalizedBy jacocoTestReport
 }
 
 jacocoTestReport {
     reports {
         xml.required = true
+        csv.required = false
+        html.destination file('target/jacocoHtml')
     }
 }
 
-
 testlogger {
     showStandardStreams true
+}
+
+jacoco {
+    toolVersion = '0.8.8'
 }
 
 checkstyle {
