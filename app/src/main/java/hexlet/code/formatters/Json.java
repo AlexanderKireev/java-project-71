@@ -21,8 +21,6 @@ public class Json implements Format {
             m.put("name", data.getKey());
             switch (data.getValue()) {
                 case "added":
-                    m.put("value", dataFile2.get(data.getKey()));
-                    break;
                 case "unchanged":
                     m.put("value", dataFile2.get(data.getKey()));
                     break;
@@ -36,24 +34,6 @@ public class Json implements Format {
                 default:
                     System.out.print("Error value");
             }
-
-
-
-
-
-
-
-//            if (data.getValue().equals("added")
-//                    || data.getValue().equals("unchanged")) {
-//                m.put("value", dataFile2.get(data.getKey()));
-//            }
-//            if (data.getValue().equals("deleted")) {
-//                m.put("value", dataFile1.get(data.getKey()));
-//            }
-//            if (data.getValue().equals("changed")) {
-//                m.put("value1", dataFile1.get(data.getKey()));
-//                m.put("value2", dataFile2.get(data.getKey()));
-//            }
             allData.add(m);
         }
 //        запись результата в json-файл
