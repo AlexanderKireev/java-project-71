@@ -28,8 +28,9 @@ public class Differ {
                         return "changed";
                     }
                 }, (v1, v2) -> v1, TreeMap::new));
-        Format formatter = changeFormat(formateName);
-        return formatter.getString(dataFile1, dataFile2, dataSign);
+//        Format formatter = changeFormat(formateName);
+        String result = changeFormat(formateName).getString(dataFile1, dataFile2, dataSign);
+        return result;
     }
 
     public static String generate(String filePath1, String filePath2) throws Exception {
