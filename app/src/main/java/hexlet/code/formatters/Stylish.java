@@ -26,22 +26,6 @@ public class Stylish implements Format {
                 default:
                     System.out.print("Error value");
             }
-
-
-
-//            if (data.getValue().equals("unchanged")) {
-//                result.append(makeString(" ", data.getKey(), dataFile1.get(data.getKey())));
-//            }
-//            if (data.getValue().equals("changed")) {
-//                result.append(makeString("-", data.getKey(), dataFile1.get(data.getKey())))
-//                        .append(makeString("+", data.getKey(), dataFile2.get(data.getKey())));
-//            }
-//            if (data.getValue().equals("added")) {
-//                result.append(makeString("+", data.getKey(), dataFile2.get(data.getKey())));
-//            }
-//            if (data.getValue().equals("deleted")) {
-//                result.append(makeString("-", data.getKey(), dataFile1.get(data.getKey())));
-//            }
         }
         result.append("}");
         return result.toString();
