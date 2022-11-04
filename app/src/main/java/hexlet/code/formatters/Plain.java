@@ -6,9 +6,12 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.util.Map;
 
+import static hexlet.code.Differ.getSign;
+
 public class Plain implements Format {
-    public final String getString(Map<String, Object> dataFile1, Map<String, Object> dataFile2,
-                            Map<String, Object> dataSign) {
+    public final String getString(Map<String, Object> dataFile1, Map<String, Object> dataFile2/*,
+                            Map<String, Object> dataSign*/) {
+        Map<String, Object> dataSign = getSign(dataFile1, dataFile2);
         var result = new StringBuilder();
         for (Map.Entry<String, Object> data: dataSign.entrySet()) {
             Object firstVal = dataFile1.get(data.getKey());
