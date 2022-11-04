@@ -26,8 +26,9 @@ public class Differ {
         return generate(filePath1, filePath2, "stylish");
     }
 
-    public static Map<String, Object> getSign (Map<String, Object> dataFile1, Map<String, Object> dataFile2) {
-        Map<String, Object> dataSign = Stream.concat(dataFile1.entrySet().stream(), dataFile2.entrySet().stream())
+    public static Map<String, Object> getSign(Map<String, Object> dataFile1, Map<String, Object> dataFile2) {
+//        Map<String, Object> dataSign =
+        return Stream.concat(dataFile1.entrySet().stream(), dataFile2.entrySet().stream())
                 .collect(Collectors.toMap(Map.Entry::getKey, v -> {
                     if (dataFile1.containsKey(v.getKey()) && !dataFile2.containsKey(v.getKey())) {
                         return "deleted";
@@ -39,6 +40,6 @@ public class Differ {
                         return "changed";
                     }
                 }, (v1, v2) -> v1, TreeMap::new));
-        return dataSign;
+//        return dataSign;
     }
 }
