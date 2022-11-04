@@ -15,9 +15,9 @@ import static hexlet.code.Differ.getSign;
 public class Json implements Format {
     public final String getString(Map<String, Object> dataFile1, Map<String, Object> dataFile2/*,
                             Map<String, Object> dataSign*/) throws Exception {
-        Map<String, Object> dataSign = getSign(dataFile1, dataFile2);
+        Map<String, String> dataSign = getSign(dataFile1, dataFile2);
         List<Object> allData = new ArrayList<>();
-        for (Map.Entry<String, Object> data : dataSign.entrySet()) {
+        for (Map.Entry<String, String> data : dataSign.entrySet()) {
             Map<String, Object> m = new TreeMap<>();
             m.put("operation", data.getValue());
             m.put("name", data.getKey());

@@ -16,18 +16,14 @@ public class Differ {
         Map<String, Object> dataFile1 = new TreeMap<>(getData(filePath1));
         Map<String, Object> dataFile2 = new TreeMap<>(getData(filePath2));
 
-
-//        Format formatter = changeFormat(formateName);
-        String result = changeFormat(formateName).getString(dataFile1, dataFile2);
-        return result;
+        return changeFormat(formateName).getString(dataFile1, dataFile2);
     }
 
     public static String generate(String filePath1, String filePath2) throws Exception {
         return generate(filePath1, filePath2, "stylish");
     }
 
-    public static Map<String, Object> getSign(Map<String, Object> dataFile1, Map<String, Object> dataFile2) {
-//        Map<String, Object> dataSign =
+    public static Map<String, String> getSign(Map<String, Object> dataFile1, Map<String, Object> dataFile2) {
         return Stream.concat(dataFile1.entrySet().stream(), dataFile2.entrySet().stream())
                 .collect(Collectors.toMap(Map.Entry::getKey, v -> {
                     if (dataFile1.containsKey(v.getKey()) && !dataFile2.containsKey(v.getKey())) {
@@ -40,6 +36,5 @@ public class Differ {
                         return "changed";
                     }
                 }, (v1, v2) -> v1, TreeMap::new));
-//        return dataSign;
     }
 }

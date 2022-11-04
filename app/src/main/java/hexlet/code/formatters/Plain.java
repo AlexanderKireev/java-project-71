@@ -11,9 +11,9 @@ import static hexlet.code.Differ.getSign;
 public class Plain implements Format {
     public final String getString(Map<String, Object> dataFile1, Map<String, Object> dataFile2/*,
                             Map<String, Object> dataSign*/) {
-        Map<String, Object> dataSign = getSign(dataFile1, dataFile2);
+        Map<String, String> dataSign = getSign(dataFile1, dataFile2);
         var result = new StringBuilder();
-        for (Map.Entry<String, Object> data: dataSign.entrySet()) {
+        for (Map.Entry<String, String> data: dataSign.entrySet()) {
             Object firstVal = dataFile1.get(data.getKey());
             Object secondVal = dataFile2.get(data.getKey());
             if (data.getValue().equals("changed")) {
