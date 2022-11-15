@@ -3,33 +3,26 @@ package hexlet.code.formatters;
 import hexlet.code.Format;
 import org.apache.commons.lang3.ClassUtils;
 import org.apache.commons.lang3.StringUtils;
+import java.util.List;
 import java.util.Map;
-import static hexlet.code.Differ.getSign;
 
 public class Plain implements Format {
-    public final String getString(Map<String, Object> dataFile1, Map<String, Object> dataFile2) {
-        Map<String, String> dataSign = getSign(dataFile1, dataFile2);
+    @Override
+    public final String format(Map<String, List<Object>> differData) {
         var result = new StringBuilder();
-        for (Map.Entry<String, String> data: dataSign.entrySet()) {
-            Object firstVal = dataFile1.get(data.getKey());
-            Object secondVal = dataFile2.get(data.getKey());
-            switch (data.getValue()) {
-                case "unchanged":
-                    break;
-                case "changed":
-                    result.append("Property '").append(data.getKey())
-                            .append("' was updated. From ").append(getValByType(firstVal))
-                            .append(" to ").append(getValByType(secondVal)).append("\n");
-                    break;
-                case "added":
-                    result.append("Property '").append(data.getKey())
-                            .append("' was added with value: ").append(getValByType(secondVal)).append("\n");
-                    break;
-                case "deleted":
-                    result.append("Property '").append(data.getKey()).append("' was removed\n");
-                    break;
-                default:
-                    System.out.print("Error value");
+        for (Map.Entry<String, List<Object>> data : differData.entrySet()) {
+            Object value = ((List<?>) data.getValue()).get(VALUE_POSITION);
+            Object changedValue = data.getValue().size() > CHANGED_VALUE_POSITION
+                    ? ((List<?>) data.getValue()).get(CHANGED_VALUE_POSITION) : null;
+            switch (((List<?>) data.getValue()).get(STATUS_POSITION).toString()) {
+                case "unchanged" -> result.append("");
+                case "changed" -> result.append("Property '").append(data.getKey())
+                        .append("' was updated. From ").append(getValByType(value))
+                        .append(" to ").append(getValByType(changedValue)).append("\n");
+                case "added" -> result.append("Property '").append(data.getKey())
+                        .append("' was added with value: ").append(getValByType(value)).append("\n");
+                case "deleted" -> result.append("Property '").append(data.getKey()).append("' was removed\n");
+                default -> throw new RuntimeException("Error value");
             }
         }
         return StringUtils.removeEnd(result.toString(), "\n");

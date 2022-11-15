@@ -1,37 +1,27 @@
 package hexlet.code.formatters;
 
 import hexlet.code.Format;
+import java.util.List;
 import java.util.Map;
-import static hexlet.code.Differ.getSign;
 
 public class Stylish implements Format {
-    public final String getString(Map<String, Object> dataFile1, Map<String, Object> dataFile2) {
-        Map<String, String> dataSign = getSign(dataFile1, dataFile2);
+    @Override
+    public final String format(Map<String, List<Object>> differData) {
         var result = new StringBuilder("{\n");
-        for (Map.Entry<String, String> data : dataSign.entrySet()) {
-            switch (data.getValue()) {
-                case "unchanged":
-                    result.append(makeString(" ", data.getKey(), dataFile1.get(data.getKey())));
-                    break;
-                case "changed":
-                    result.append(makeString("-", data.getKey(), dataFile1.get(data.getKey())))
-                            .append(makeString("+", data.getKey(), dataFile2.get(data.getKey())));
-                    break;
-                case "added":
-                    result.append(makeString("+", data.getKey(), dataFile2.get(data.getKey())));
-                    break;
-                case "deleted":
-                    result.append(makeString("-", data.getKey(), dataFile1.get(data.getKey())));
-                    break;
-                default:
-                    System.out.print("Error value");
+        for (Map.Entry<String, List<Object>> data : differData.entrySet()) {
+            Object value = ((List<?>) data.getValue()).get(VALUE_POSITION);
+            switch (((List<?>) data.getValue()).get(STATUS_POSITION).toString()) {
+                case "unchanged" -> result.append("    ").append(data.getKey()).append(": ").append(value);
+                case "changed" -> result.append("  - ").append(data.getKey()).append(": ")
+                        .append(value).append("\n").append("  + ").append(data.getKey()).append(": ")
+                        .append(((List<?>) data.getValue()).get(CHANGED_VALUE_POSITION));
+                case "added" -> result.append("  + ").append(data.getKey()).append(": ").append(value);
+                case "deleted" -> result.append("  - ").append(data.getKey()).append(": ").append(value);
+                default -> throw new RuntimeException("Error value");
             }
+            result.append("\n");
         }
         result.append("}");
         return result.toString();
-    }
-
-    public static String makeString(String sign, String key, Object value) {
-        return "  "/*.repeat(2)*/ + sign + " " + key + ": " + value + "\n";
     }
 }
