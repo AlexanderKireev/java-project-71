@@ -50,6 +50,7 @@ public class DifferTest {
                 Property 'setting1' was updated. From 'Some value' to 'Another value'
                 Property 'setting2' was updated. From 200 to 300
                 Property 'setting3' was updated. From true to 'none'""";
+
     private final String expectedJson = "[{\"name\":\"chars1\",\"operation\":\"unchanged\",\"value\":[\""
             + "a\",\"b\",\"c\"]},{\"name\":\"chars2\",\"operation\":\"changed\",\"value1\":[\"d\",\"e\",\"f\""
             + "],\"value2\":false},{\"name\":\"checked\",\"operation\":\"changed\",\"value1\":false,\"value2\":"
