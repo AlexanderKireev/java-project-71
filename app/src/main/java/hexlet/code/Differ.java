@@ -26,7 +26,7 @@ public class Differ {
                 .collect(Collectors.toMap(Map.Entry::getKey, v -> {
                     if (dataFile1.containsKey(v.getKey()) && !dataFile2.containsKey(v.getKey())) {
                         return Arrays.asList("deleted", dataFile1.get(v.getKey()));
-                        // return List.of() не получилось, оказалось иммутабельные листы не принимают объект null
+                       // return List.of() не получилось, оказалось иммутабельные листы не принимают объект null
                     } else if (!dataFile1.containsKey(v.getKey()) && dataFile2.containsKey(v.getKey())) {
                         return Arrays.asList("added", dataFile2.get(v.getKey()));
                     } else if (Objects.equals(dataFile1.get(v.getKey()), dataFile2.get(v.getKey()))) {
