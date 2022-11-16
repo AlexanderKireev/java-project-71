@@ -21,11 +21,12 @@ public class Differ {
     }
 
     public static Map<String, List<Object>> addStatus(Map<String, Object> dataFile1, Map<String, Object> dataFile2) {
-        //result: {chars1=[unchanged, [a, b, c]], chars2=[changed, [d, e, f], false]...}
+        //на выходе получим: {chars1=[unchanged, [a, b, c]], chars2=[changed, [d, e, f], false]... и т.д.}
         return Stream.concat(dataFile1.entrySet().stream(), dataFile2.entrySet().stream())
                 .collect(Collectors.toMap(Map.Entry::getKey, v -> {
                     if (dataFile1.containsKey(v.getKey()) && !dataFile2.containsKey(v.getKey())) {
                         return Arrays.asList("deleted", dataFile1.get(v.getKey()));
+                        // return List.of() не получилось, оказалось иммутабельные листы не принимают объект null
                     } else if (!dataFile1.containsKey(v.getKey()) && dataFile2.containsKey(v.getKey())) {
                         return Arrays.asList("added", dataFile2.get(v.getKey()));
                     } else if (Objects.equals(dataFile1.get(v.getKey()), dataFile2.get(v.getKey()))) {
