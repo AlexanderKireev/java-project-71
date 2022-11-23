@@ -1,22 +1,27 @@
 package hexlet.code.formatters;
 
 import hexlet.code.Format;
-import java.util.List;
+import hexlet.code.DifferValues;
 import java.util.Map;
 
 public class Stylish implements Format {
     @Override
-    public final String format(Map<String, List<Object>> differData) {
+    public final String format(Map<String, DifferValues> differData) {
         var result = new StringBuilder("{\n");
-        for (Map.Entry<String, List<Object>> data : differData.entrySet()) {
-            Object value = ((List<?>) data.getValue()).get(VALUE_POSITION);
-            switch (((List<?>) data.getValue()).get(STATUS_POSITION).toString()) {
-                case "unchanged" -> result.append("    ").append(data.getKey()).append(": ").append(value);
-                case "changed" -> result.append("  - ").append(data.getKey()).append(": ")
-                        .append(value).append("\n").append("  + ").append(data.getKey()).append(": ")
-                        .append(((List<?>) data.getValue()).get(CHANGED_VALUE_POSITION));
-                case "added" -> result.append("  + ").append(data.getKey()).append(": ").append(value);
-                case "deleted" -> result.append("  - ").append(data.getKey()).append(": ").append(value);
+        String str = "  %s %s: %s";
+//        String none = " ";
+//        String add = "+";
+//        String del = "-";
+        for (Map.Entry<String, DifferValues> data : differData.entrySet()) {
+            String key = data.getKey();
+            Object value1 = data.getValue().getValue1();
+            Object value2 = data.getValue().getValue2();
+            switch (data.getValue().getStatus()) {
+                case "unchanged" -> result.append(String.format(str, " ", key, value1));
+                case "changed" -> result.append(String.format(str, "-", key, value1))
+                        .append("\n").append(String.format(str, "+", key, value2));
+                case "added" -> result.append(String.format(str, "+", key, value2));
+                case "deleted" -> result.append(String.format(str, "-", key, value1));
                 default -> throw new RuntimeException("Error value");
             }
             result.append("\n");

@@ -1,27 +1,27 @@
 package hexlet.code.formatters;
 
 import hexlet.code.Format;
+import hexlet.code.DifferValues;
 import org.apache.commons.lang3.ClassUtils;
 import org.apache.commons.lang3.StringUtils;
-import java.util.List;
 import java.util.Map;
 
 public class Plain implements Format {
     @Override
-    public final String format(Map<String, List<Object>> differData) {
+    public final String format(Map<String, DifferValues> differData) {
         var result = new StringBuilder();
-        for (Map.Entry<String, List<Object>> data : differData.entrySet()) {
-            Object value = ((List<?>) data.getValue()).get(VALUE_POSITION);
-            Object changedValue = data.getValue().size() > CHANGED_VALUE_POSITION
-                    ? ((List<?>) data.getValue()).get(CHANGED_VALUE_POSITION) : null;
-            switch (((List<?>) data.getValue()).get(STATUS_POSITION).toString()) {
+        String upd = "Property '%s' was updated. From %s to %s\n";
+        String add = "Property '%s' was added with value: %s\n";
+        String del = "Property '%s' was removed\n";
+        for (Map.Entry<String, DifferValues> data : differData.entrySet()) {
+            String key = data.getKey();
+            String value1 = getValByType(data.getValue().getValue1());
+            String value2 = getValByType(data.getValue().getValue2());
+            switch (data.getValue().getStatus()) {
                 case "unchanged" -> result.append("");
-                case "changed" -> result.append("Property '").append(data.getKey())
-                        .append("' was updated. From ").append(getValByType(value))
-                        .append(" to ").append(getValByType(changedValue)).append("\n");
-                case "added" -> result.append("Property '").append(data.getKey())
-                        .append("' was added with value: ").append(getValByType(value)).append("\n");
-                case "deleted" -> result.append("Property '").append(data.getKey()).append("' was removed\n");
+                case "changed" -> result.append(String.format(upd, key, value1, value2));
+                case "added" -> result.append(String.format(add, key, value1));
+                case "deleted" -> result.append(String.format(del, key));
                 default -> throw new RuntimeException("Error value");
             }
         }
