@@ -5,8 +5,8 @@ import java.util.Objects;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import static hexlet.code.Formatter.chooseFormatter;
-import static hexlet.code.FileFactory.getData;
+import static hexlet.code.formatters.Formatter.chooseFormatter;
+import static hexlet.code.FileUtils.getData;
 
 public class Differ {
     public static String generate(String filePath1, String filePath2, String formateName) throws Exception {

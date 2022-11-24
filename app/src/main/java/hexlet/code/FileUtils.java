@@ -3,10 +3,9 @@ package hexlet.code;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Map;
+import static hexlet.code.parsers.ParserFactory.chooseParser;
 
-import static hexlet.code.ParserFactory.chooseParser;
-
-public class FileFactory {
+public class FileUtils {
     public static Map<String, Object> getData(String filePath) throws Exception {
         byte[] mapData = readFile(filePath);
         String fileType = getFileExtension(filePath);

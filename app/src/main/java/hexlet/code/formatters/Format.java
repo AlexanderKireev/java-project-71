@@ -1,5 +1,6 @@
-package hexlet.code;
+package hexlet.code.formatters;
 
+import hexlet.code.DifferValues;
 import java.util.Map;
 
 public interface Format {

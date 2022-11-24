@@ -1,7 +1,6 @@
 package hexlet.code.formatters;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import hexlet.code.Format;
 import hexlet.code.DifferValues;
 import java.util.ArrayList;
 import java.util.List;

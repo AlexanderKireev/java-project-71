@@ -1,4 +1,4 @@
-package hexlet.code;
+package hexlet.code.parsers;
 
 public class ParserFactory {
     public static Parser chooseParser(String fileExtension) {
