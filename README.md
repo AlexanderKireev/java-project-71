@@ -6,7 +6,7 @@
 ## Проект "Вычислитель отличий" ("Difference Calculator")
 Выполнен в рамках обучения в компании "Хекслет" ("Hexlet Ltd.") на курсе java-программирования.
 
-Сдан на проверку: 08 ноября 2022 года. Студент: Киреев Александр. Куратор: Теплинская Мария ("Hexlet Ltd.").
+Принят: 25 ноября 2022 года. Студент: Киреев Александр. Куратор: Теплинская Мария ("Hexlet Ltd.").
 
 [![Hexlet Ltd. logo](https://raw.githubusercontent.com/Hexlet/assets/master/images/hexlet_logo128.png)](https://ru.hexlet.io/pages/about?utm_source=github&utm_medium=link&utm_campaign=java-package)
 
